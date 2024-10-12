@@ -37,18 +37,15 @@ JPanel mainWorkArea;
     private void initComponents() {
 
         splitPane = new javax.swing.JSplitPane();
-        workArea = new javax.swing.JPanel();
         menuBar = new javax.swing.JPanel();
         btnManageSuppliers = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         lblWelcome = new javax.swing.JLabel();
+        workArea = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        workArea.setLayout(new java.awt.CardLayout());
-        splitPane.setRightComponent(workArea);
 
         btnManageSuppliers.setText("Manage Suppliers");
         btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
@@ -72,12 +69,12 @@ JPanel mainWorkArea;
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBarLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers)
-                .addGap(19, 19, 19)
-                .addComponent(btnLogOut)
-                .addGap(46, 46, 46))
+                .addGap(26, 26, 26)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,17 +89,30 @@ JPanel mainWorkArea;
 
         splitPane.setTopComponent(menuBar);
 
+        workArea.setLayout(new java.awt.CardLayout());
+        splitPane.setRightComponent(workArea);
+
         add(splitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
         // TODO add your handling code here:
-
+        ManageSuppliers panel=new ManageSuppliers(workArea,supplierDirectory);
+        workArea.add("ManageSuppliersAdministrative",panel);
+        CardLayout layout=(CardLayout) workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
-
+    mainWorkArea.remove(this);
+    Component[] componentArray = workArea.getComponents();
+    Component component = componentArray[componentArray.length - 1];
+    ManageSuppliers manageSuppliersJPanel = (ManageSuppliers) component;
+    manageSuppliersJPanel.refreshTable();
+    CardLayout layout = (CardLayout) workArea.getLayout();
+    layout.previous(workArea);
+ 
     }//GEN-LAST:event_btnLogOutActionPerformed
 @Override
 public String toString(){

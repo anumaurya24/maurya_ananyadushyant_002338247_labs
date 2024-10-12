@@ -20,12 +20,11 @@ public class SupplierDirectory {
     public   ArrayList<Supplier> getSupplierList(){
         return supplierList;
     }
-    
-    public Supplier addSuppplier(){
+     public Supplier addSupplier() {
         Supplier s=new Supplier();
         supplierList.add(s);
         return s;
-}
+    }
 public void removeSupplier(Supplier s){
         supplierList.remove(s);
 }
@@ -38,6 +37,8 @@ public Supplier searchSupplier(String keyWord){
     }  
       return null;
 }     
+
+   
 }
 
 
