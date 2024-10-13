@@ -68,13 +68,13 @@ JPanel mainWorkArea;
         menuBarLayout.setHorizontalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBarLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(lblWelcome)
+                .addGap(32, 32, 32)
                 .addComponent(btnManageSuppliers)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,12 +106,12 @@ JPanel mainWorkArea;
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
     mainWorkArea.remove(this);
-    Component[] componentArray = workArea.getComponents();
+    Component[] componentArray = mainWorkArea.getComponents();
     Component component = componentArray[componentArray.length - 1];
-    ManageSuppliers manageSuppliersJPanel = (ManageSuppliers) component;
-    manageSuppliersJPanel.refreshTable();
-    CardLayout layout = (CardLayout) workArea.getLayout();
-    layout.previous(workArea);
+    LoginScreen loginPanel = (LoginScreen) component;
+    loginPanel.populateSupplierCombo();
+    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+    layout.previous(mainWorkArea);
  
     }//GEN-LAST:event_btnLogOutActionPerformed
 @Override

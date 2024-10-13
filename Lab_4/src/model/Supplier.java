@@ -45,5 +45,7 @@ public class Supplier {
     public String toString() {
         return supplyName;
     }
-    
+     public Product findProductById(int id) {
+        return productCatalog.searchProduct(id);
+     }
 }

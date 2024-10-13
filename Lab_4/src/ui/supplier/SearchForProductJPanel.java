@@ -6,6 +6,7 @@ package ui.supplier;
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  *
@@ -73,7 +74,7 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
                         .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(searchButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,15 +89,51 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+    String strId = idField.getText();
+    
+    if (strId.isBlank()) {
+        JOptionPane.showMessageDialog(this, "Please enter the product Id", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    int id = 0;
+    try {
+        // Parse the string ID into an integer
+        id = Integer.parseInt(strId);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+        // Search for the product using the ID
+    Product product = supplier.getProductCatalog().searchProduct(id);
+    
+    // If the product is not found, show an information dialog
+    if (product == null) {
+        JOptionPane.showMessageDialog(this, "Product not found", "Information", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
 
+    // Remove the current panel and switch to the product detail view
+    workArea.remove(this);
+    
+    CardLayout layout = (CardLayout) workArea.getLayout();
+    layout.previous(workArea);
+
+    ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, product);
+    workArea.add("ViewProductDetailJPanelSupplier" + vpdjp.toString(), vpdjp);
+
+    layout = (CardLayout) workArea.getLayout();
+    layout.next(workArea);
+    
+    
     }//GEN-LAST:event_searchButtonActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         workArea.remove(this);

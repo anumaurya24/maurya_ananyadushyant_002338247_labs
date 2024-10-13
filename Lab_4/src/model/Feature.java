@@ -9,6 +9,10 @@ package model;
  * @author anany
  */
 public class Feature {
+
+    public Feature() {
+        
+    }
     private Product owner;
     private String name;
     private Object value;

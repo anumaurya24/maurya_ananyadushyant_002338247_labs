@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,7 +15,15 @@ public class Product {
     private String name;
     private int price;
     private int id;
+    private ImageIcon Image;
 
+    public ImageIcon getProdImage() {
+        return Image;
+    }
+
+    public void setProdImage(ImageIcon Image) {
+        this.Image = Image;
+    }
      public static void setCount(int count) {
         Product.count = count;
     }
@@ -62,12 +71,14 @@ public class Product {
         return count;
     }
 
-    public Feature addNewFeature() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   public Feature addNewFeature() {
+        Feature newFeature = new Feature();  // Create a new Feature using the default constructor
+        features.add(newFeature);            // Add the new Feature to the list of features
+        return newFeature;                   // Return the new Feature
 
-   
-
-   
-    
+}   
+@Override
+public String toString(){
+    return name;  
+}
 }

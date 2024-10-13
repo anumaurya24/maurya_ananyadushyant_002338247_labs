@@ -92,16 +92,16 @@ public class LoginScreen extends javax.swing.JPanel {
                             .addComponent(btnLogin)
                             .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(160, 160, 160)
                         .addComponent(lblTitle)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(32, 32, 32)
                 .addComponent(lblTitle)
-                .addGap(69, 69, 69)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRole))
@@ -111,7 +111,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     .addComponent(lblSupplier))
                 .addGap(23, 23, 23)
                 .addComponent(btnLogin)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,8 +139,8 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void cmbSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSuppliersActionPerformed
         // TODO add your handling code here:
-        if(cmbSuppliers.getSelectedItem()==null) return;
-        selectedSupplier=(Supplier) cmbSuppliers.getSelectedItem();
+        if(cmbSuppliers.getSelectedItem() == null) return;
+        selectedSupplier=(Supplier)cmbSuppliers.getSelectedItem();
     }//GEN-LAST:event_cmbSuppliersActionPerformed
 
     private void populateRoleCombo() {
@@ -171,7 +171,7 @@ public class LoginScreen extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void updateSupplierVisibility() {
-                if ((cmbRoles.getSelectedItem()==null)||(cmbRoles.getSelectedItem().getClass()==AdminWorkAreaJPanel.class))
+        if ((cmbRoles.getSelectedItem()==null)||(cmbRoles.getSelectedItem().getClass()==AdminWorkAreaJPanel.class))
         {
         selectedSupplier=null;
         lblSupplier.setVisible(false);

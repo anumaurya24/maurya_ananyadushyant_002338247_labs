@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class SupplierDirectory {
     
     private ArrayList<Supplier> supplierList;
+
     
     public SupplierDirectory(){
         supplierList=new ArrayList<Supplier>();
@@ -20,6 +21,10 @@ public class SupplierDirectory {
     public   ArrayList<Supplier> getSupplierList(){
         return supplierList;
     }
+    public void setSupplierList(ArrayList<Supplier> supplierList) {
+        this.supplierList = supplierList;
+    }
+    
      public Supplier addSupplier() {
         Supplier s=new Supplier();
         supplierList.add(s);
