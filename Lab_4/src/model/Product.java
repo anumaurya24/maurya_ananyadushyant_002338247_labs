@@ -15,14 +15,14 @@ public class Product {
     private String name;
     private int price;
     private int id;
-    private ImageIcon Image;
+    private ImageIcon prodImage;
 
     public ImageIcon getProdImage() {
-        return Image;
+        return prodImage;
     }
 
     public void setProdImage(ImageIcon Image) {
-        this.Image = Image;
+        this.prodImage = Image;
     }
      public static void setCount(int count) {
         Product.count = count;
@@ -81,4 +81,5 @@ public class Product {
 public String toString(){
     return name;  
 }
+
 }

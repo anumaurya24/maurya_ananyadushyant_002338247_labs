@@ -132,8 +132,6 @@ public class AddSupplier extends javax.swing.JPanel {
         });
         add(btnAddSupplier);
         btnAddSupplier.setBounds(570, 220, 72, 23);
-
-        imgLogo.setText("<no img>");
         add(imgLogo);
         imgLogo.setBounds(200, 190, 330, 170);
     }// </editor-fold>//GEN-END:initComponents
@@ -174,7 +172,8 @@ public class AddSupplier extends javax.swing.JPanel {
         Supplier supplier = supplierDirectory.addSupplier();
         supplier.setSupplyName(txtName.getText());
         supplier.setLogoImage(logoImage);
-
+        supplier.setDescription(jTextArea1.getText());
+        
         JOptionPane.showMessageDialog(this, "Supplier successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
         backAction();
     }//GEN-LAST:event_btnAddSupplierActionPerformed

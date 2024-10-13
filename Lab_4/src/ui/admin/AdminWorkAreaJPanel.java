@@ -7,7 +7,6 @@ import model.SupplierDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
-import ui.LoginScreen;
 
 /**
  *
@@ -47,6 +46,9 @@ JPanel mainWorkArea;
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
+        menuBar.setForeground(new java.awt.Color(255, 255, 255));
+
         btnManageSuppliers.setText("Manage Suppliers");
         btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +76,7 @@ JPanel mainWorkArea;
                 .addComponent(btnManageSuppliers)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,6 +97,18 @@ JPanel mainWorkArea;
         add(splitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        mainWorkArea.remove(this);
+        Component[] componentArray = mainWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        LoginScreen loginPanel = (LoginScreen) component;
+        loginPanel.populateSupplierCombo();
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
+
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
         // TODO add your handling code here:
         ManageSuppliers panel=new ManageSuppliers(workArea,supplierDirectory);
@@ -102,18 +116,6 @@ JPanel mainWorkArea;
         CardLayout layout=(CardLayout) workArea.getLayout();
         layout.next(workArea);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
-
-    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
-        // TODO add your handling code here:
-    mainWorkArea.remove(this);
-    Component[] componentArray = mainWorkArea.getComponents();
-    Component component = componentArray[componentArray.length - 1];
-    LoginScreen loginPanel = (LoginScreen) component;
-    loginPanel.populateSupplierCombo();
-    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-    layout.previous(mainWorkArea);
- 
-    }//GEN-LAST:event_btnLogOutActionPerformed
 @Override
 public String toString(){
     return "Administor";

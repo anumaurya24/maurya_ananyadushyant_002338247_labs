@@ -6,8 +6,9 @@ package ui.supplier;
 import model.Supplier;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import ui.LoginScreen;
+import ui.admin.LoginScreen;
 /**
  *
  * @author anany
@@ -15,6 +16,7 @@ import ui.LoginScreen;
 public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 JPanel mainWorkArea;
     Supplier supplier;
+   
     /**
      * Creates new form SupplierWorkAreaJPanel
      */
@@ -23,8 +25,9 @@ JPanel mainWorkArea;
         this.mainWorkArea = mainWorkArea;
         
         this.supplier = supplier;
-        if (supplier != null) lblWelcome.setText("Welcome to Lab 4, "+supplier.getSupplyName());
         
+        if (supplier != null) lblWelcome.setText("Welcome to Lab 4, "+supplier.getSupplyName());
+        btnSupplierProfile.setEnabled(true);
     }
 
     /**
@@ -65,7 +68,6 @@ JPanel mainWorkArea;
         });
 
         btnSupplierProfile.setText("Update Profile");
-        btnSupplierProfile.setEnabled(false);
         btnSupplierProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupplierProfileActionPerformed(evt);
@@ -92,18 +94,18 @@ JPanel mainWorkArea;
                 .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuBarLayout.createSequentialGroup()
                         .addComponent(btnSupplierProfile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
                     .addGroup(menuBarLayout.createSequentialGroup()
                         .addComponent(lblWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(24, 24, 24)))
-                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageProductCatalog)
-                    .addComponent(btnManageStaff))
+                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageProductCatalog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageStaff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Performance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,11 +132,11 @@ JPanel mainWorkArea;
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,7 +163,7 @@ JPanel mainWorkArea;
     }//GEN-LAST:event_btnManageProductCatalogActionPerformed
 
     private void btnSupplierProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierProfileActionPerformed
-        UpdateSupplier us = new UpdateSupplier(workArea, supplier); 
+        UpdateSupplier us = new UpdateSupplier(workArea, supplier,lblWelcome); 
         workArea.add("AddSupplier", us);
     
         CardLayout layout = (CardLayout) workArea.getLayout();
