@@ -193,7 +193,7 @@ JPanel workArea;
 
     private void btnUpdateSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSupplierActionPerformed
         // TODO add your handling code here:
-        lblWelcome.setText("Welcome to Lab 4,"+ txtName.getSelectedText());
+        lblWelcome.setText("Welcome to Lab 4,"+ txtName.getText());
         supplier.setSupplyName(txtName.getText());
         supplier.setLogoImage(logoImage);
         supplier.setDescription(txtdesc.getText());
