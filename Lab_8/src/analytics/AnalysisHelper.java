@@ -107,7 +107,7 @@ public class AnalysisHelper {
           Collections.sort(users, new UserMapComparator(commentNumbers));
           System.out.println("Q5-The following users have the least comments:");
           for(int i=0;i<5;i++){
-          System.out.println(GREEN+users.get(i)+",- Post count:"+commentNumbers.get(users.get(i).getId())+RESET);
+          System.out.println(GREEN+users.get(i)+",- Comment count:"+commentNumbers.get(users.get(i).getId())+RESET);
       }
 }
       public void getPassiveAndActiveOverallUsers(){
